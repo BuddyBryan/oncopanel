@@ -1,0 +1,41 @@
+<!-- Tab navigation and options -->
+<section layout="row" layout-sm="column" layout-align="center end" layout-wrap>
+  <md-button
+      flex="13"
+      class="md-raised"
+      ng-click="previousTab()"
+      ng-disabled="selectedTab == 0">
+    <md-icon md-font-library="material-icons">navigate_before</md-icon>
+    Previous
+  </md-button>
+  <md-button
+    flex="7"
+    class="md-raised md-warn"
+    ng-click="clearForm()"
+    ng-disabled="filterForm.$pristine">Clear</md-button>
+  <md-button
+    flex="7"
+    class="md-raised md-primary"
+    ng-show="!loadedGenomicFilter"
+    ng-click="saveGenomicFilter(genomicFilter)"
+    ng-disabled="filterForm.$invalid || !isValidFilter(genomicFilter)">Save</md-button>
+  <md-button
+    flex="7"
+    class="md-raised md-primary"
+    ng-show="loadedGenomicFilter"
+    ng-click="updateGenomicFilter(genomicFilter)"
+    ng-disabled="filterForm.$invalid || !isValidFilter(genomicFilter)">Update</md-button>
+  <md-button class="md-raised"
+             ng-click="nextTab()"
+             ng-disabled="selectedTab == 2">
+    Next
+    <md-icon md-font-library="material-icons">navigate_next</md-icon>
+  </md-button>
+</section>
+<section ng-if="filterForm.$dirty && filterForm.$invalid"
+         role="alert"
+         layout="row"
+         layout-align="center center"
+         layout-wrap>
+  <div><p style="font-size: 110%; color: rgb(244,67,54);">Not all required fields have been entered.</p></div>
+</section>

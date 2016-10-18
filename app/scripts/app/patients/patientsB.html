@@ -1,0 +1,775 @@
+<section id="main"
+         layout="row"
+         layout-fill
+         class="md-body sw-toggled"
+         ng-controller="PatientsCtrl as pctrl"
+  >
+  <!-- The sidebar -->
+  <div id="sidebar" ng-include="'./scripts/app/patients/sidebar.html'"
+       ng-class="{'toggled' : pctrl.sidebarToggle === true }"
+       ng-controller="SidebarCtrl as sctrl"
+    />
+
+  <!-- The main record content -->
+  <section id="content">
+    <div class="container">
+
+      <div class="mini-charts">
+        <div class="row">
+
+          <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgmd-blue">
+              <div class="clearfix">
+                <div class="chart">
+                  <md-icon aria-label="Sequencing Coverage"
+                           md-font-library="material-icons">
+                    history
+                  </md-icon>
+                </div>
+                <div class="count">
+                  <small>Last updated</small>
+                  <h2>08-12-2015</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgmd-blue">
+              <div class="clearfix">
+                <div class="chart">
+                  <md-icon aria-label="Sequencing Coverage"
+                           md-font-library="material-icons">
+                    call_missed
+                  </md-icon>
+                </div>
+                <div class="count">
+                  <small>Last Visit</small>
+                  <h2>02-05-2015</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgmd-blue">
+              <div class="clearfix">
+                <div class="chart">
+                  <md-icon aria-label="Last Visit"
+                           md-font-library="material-icons">
+                    call_missed_outgoing
+                  </md-icon>
+                </div>
+                <div class="count">
+                  <small>Next Visit</small>
+                  <h2>12-12-2016</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgmd-blue">
+              <div class="clearfix">
+                <div class="chart">
+                  <!-- assessment -->
+                  <md-icon aria-label="Clinical trial assigned"
+                           md-font-library="material-icons">
+                    healing
+                  </md-icon>
+                </div>
+                <div class="count">
+                  <small>Clinical Trial</small>
+                  <h2>None</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Patient charts -->
+
+
+      <div class="block-header">
+        <h2 id="patientRecord">
+          <md-icon aria-label="Patient details"
+                   md-font-library="material-icons">
+            assignment
+          </md-icon>
+          Patient record
+        </h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <md-icon aria-label="General information"
+                         md-font-library="material-icons">
+                  person
+                </md-icon>
+                General information
+              </h2>
+            </div>
+            <div class="card-body">
+
+              <div class="ps-block">
+                <div class="ps-header">
+                </div>
+                <div class="ps-body">
+
+                  <h4>Clinician details</h4>
+                  <dl class="dl-horizontal">
+                    <dt>Ordering Clinician</dt>
+                    <dd>XXXXXXXXXX, M.D.</dd>
+                    <dt>Date of Report</dt>
+                    <dd>02/04/2016</dd>
+                  </dl>
+
+                  <h4>Patient details</h4>
+                  <dl class="dl-horizontal">
+                    <dt>Patient Name </dt>
+                    <dd>XXX XXXXX</dd>
+                    <dt>Date of Birth (DOB)</dt>
+                    <dd>01/10/1967</dd>
+                    <dt>Sex</dt>
+                    <dd>Female</dd>
+                  </dl>
+
+                  <h4>Diagnosis</h4>
+                  <dl class="dl-horizontal">
+                    <dt>Age at diagnosis</dt>
+                    <dd>47 (2 years ago)</dd>
+                    <dt>Sex at diagnosis</dt>
+                    <dd>Female</dd>
+
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <md-icon aria-label="Analysis"
+                         md-font-library="material-icons">
+                  donut_large
+                </md-icon>
+                Analysis information
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="ps-block">
+                <div class="ps-header">
+                </div>
+                <div class="ps-body">
+                  <h4>Genetics</h4>
+                  <dl class="dl-horizontal">
+                    <dt>Geneticist</dt>
+                    <dd>XXXXXXXXXX, M.D.</dd>
+                    <dt>Test Performed</dt>
+                    <dd>OncoPanel 2014</dd>
+                  </dl>
+
+                  <h4>Pathology</h4>
+                  <dl class="dl-horizontal">
+                    <dt>Specimen collected</dt>
+                    <dd>10/18/2014</dd>
+                    <dt>Original diagnosis</dt>
+                    <dd>Breast Cancer</dd>
+                    <dt>% Neoplastic cells</dt>
+                    <dd>30%</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin: 0px;">
+        <div class="col-sm-12 panel panel-default">
+          <div class="panel-body"> 
+            Hover over any Info Icon on this page to see more text
+                <sm-icon style="float: right;">
+                <span data-toggle="tooltip" title="Info Icons and other tooltips contain important descriptions and details" data-placement="left" class="glyphicon glyphicon-info-sign"></span>
+                </sm-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-header">
+        <h2 id="qualityControl">
+          <md-icon aria-label="Sequencing quality control"
+                   md-font-library="material-icons">
+            assessment
+          </md-icon>
+          Quality control
+          <span data-toggle="tooltip" class="glyphicon glyphicon-warning-sign" style="font-size: 20px; margin-left: 30px;">
+          </span> <small>low</small>
+          <span data-toggle="tooltip" class="glyphicon glyphicon-adjust" style="font-size: 20px; margin-left: 10px;">
+          </span> <small>moderate</small>
+          <span data-toggle="tooltip" class="glyphicon glyphicon-check" style="font-size: 20px; margin-left: 10px;">
+          </span> <small>good</small>
+        </h2>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="mini-charts-item bgmd-lightgreen">
+              <span data-toggle="tooltip" class="glyphicon glyphicon-check span-icon">
+              </span>
+            <div class="clearfix">
+              <div class="chart">
+                <md-icon aria-label="Sequencing Coverage"
+                         md-font-library="material-icons">
+                  clear_all
+                </md-icon>
+              </div>
+              <div class="count">
+                <small>Sequencing Coverage</small>
+                <sm-icon style="text-align:right">
+                <span data-toggle="tooltip" title="This value describes the average number of sequencing reads across the panel. More reads (also known as &quot;depth&quot; or &quot;coverage&quot;) enables more power to detect any variants at a given site in the genome" class="glyphicon glyphicon-info-sign"></span>
+                </sm-icon>
+                <h2>155X</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6">
+          <div class="mini-charts-item bgmd-amber">
+              <span data-toggle="tooltip" class="glyphicon glyphicon-adjust span-icon">
+              </span>
+            <div class="clearfix">
+              <div class="chart">
+                <md-icon aria-label="Tumor purity"
+                         md-font-library="material-icons">
+                 blur_on
+                </md-icon>
+              </div>
+              <div class="count">
+                <small>Tumor purity</small>
+                <sm-icon style="text-align:right">
+                <span data-toggle="tooltip" title="Refers to the pathologist interpretation of sample purity. The more pure a sample is, the more power there is to detect variants that occur in smaller numbers of cancer cells" class="glyphicon glyphicon-info-sign"></span>
+                </sm-icon>
+                <h2>30%</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="block-header">
+        <h2 id="observations">
+          <md-icon
+            aria-label="Observations"
+            md-font-library="material-icons">
+              mode_comment
+          </md-icon>
+          Impression
+        </h2>
+      </div>
+
+      <!-- Comments -->
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            General remarks
+            <small>Bioinformatics comments on produced deep sequencing data and analysis</small>
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+           <p>There are 5982541 unique, aligned, high-quality reads for this specimen with a mean of 155 reads across all targeted exons and 95% of all exons having more than 30 reads.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Somatic Variants
+          </h2>
+          <small>Interpretation: summary of notable variants</small>
+        </div>
+        <div class="card-body card-padding">
+          <h5>BUB1B c.767G>A (p.R256K)
+            <span class="supsub"> 
+              <sup class="superscripter">
+                <font color="#2196F3">
+                  Tier 3 mutation
+                </font>
+              </sup>
+            </span>
+          </h5>
+           <p>BUB1B (BubR1) is a critical component of the mitotic checkpoint.  Loss of BUB1B is associated with chromosomal instability in a variety of tumor types.  This variant has not been previously reported. </p>
+        </div>
+        <div class="card-body card-padding">
+          <h5>TP53 c.613T>C (p.Y205H)
+          <span class="supsub"> 
+            <sup class="superscripter">
+              <font color="#2196F3">
+                Tier 2 mutation
+              </font>
+            </sup>
+          </span>
+          </h5>
+           <p>Tumor protein p53 (TP53) gene is a tumour suppressor gene that is mutated in 12-80% of breast cancers, depending on subtype, and is associated with more aggressive tumor behavior (PMID: 16489069). This missense mutation has been reported in the COSMIC database in multiple tumor types, including breast carcinoma. </p>
+        </div>
+      </div>
+
+
+      <!--
+        Point mutation section
+      -->
+      <div class="block-header">
+        <h2>
+          <md-icon
+            aria-label="Point mutations"
+            md-font-library="material-icons">
+            adjust
+          </md-icon>
+          Point mutations
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 id="pointMutations">
+            Point mutation details
+            <small>Overview of point mutations and their validation by read count</small>
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+          Somatic genetic alterations in oncogenes and tumor-suppressor genes contribute to the pathogenesis and evolution
+          of human cancers. These alterations can provide prognostic and predictive information and stratify cancers for
+          targeted therapeutic information.
+        </div>
+      </div>
+
+      <div layout="row" flex>
+        <div layout="col-sm-6 col-md-6" class="md-padding" flex>
+          <div class="card" flex>
+            <div class="card-header bgmd-blue">
+                <div style='text-align:right'>
+                <span data-toggle="tooltip" title="The alteration has well-established published evidence confirming clinical utility in this tumor type, in at least one of the following contexts: predicting response to treatment with an FDA-approved therapy; assessing prognosis; establishing a definitive diagnosis; or conferring an inherited increased risk of cancer to this patient and family."
+              class="glyphicon glyphicon-info-sign">
+              </span>
+              </div>
+              <h2>
+                Tier 1
+              </h2>
+            </div>
+            <div class="card-body card-padding">
+              <ul><b>None identified</b></ul>
+            </div>
+          </div>
+        </div>
+
+        <div layout="col-sm-6 col-md-6" class="md-padding" flex>
+          <div class="card" flex>
+            <div class="card-header bgmd-blue"> 
+            <div style="text-align:right">
+                <span data-toggle="tooltip" title="The alteration may have clinical utility in at least one of the following contexts: selection of an investigational
+                therapy in clinical trials for this cancer type; limited evidence of prognostic association; supportive of a specific
+                diagnosis; proven association of response to treatment with an FDA-approved therapy in a different type of cancer;
+                or similar to a different mutation with a proven association with response to treatment with an FDA-approved therapy
+                in this type of cancer." class="glyphicon glyphicon-info-sign"></span>
+                </div>
+              <h2>
+                Tier 2
+                </h2>
+            </div>
+            <div class="card-body card-padding">
+
+              <ul><b>TP53 c.613T_>C (p.Y205H), exon 2</b></ul>
+              <ul><font color="#FFC107"><b>50%</b></font> of 73 reads</ul>
+              <ul><div class="pctbar-textL">0%</div>
+              <div class="pctbar-textM">50%</div>
+              <div class="pctbar-textR">100%</div></ul>
+              <ul><div class="pctbar-barL" data-toggle="tooltip" data-placement="bottom" title="If the tumor is very pure, this may represent a heterozygous alteration. However, one should also consider whether this is actually a rare germline variant not filtered out by existing public germline databases." style="background:#FFC107; width: 50px;">
+              </div>
+              </ul>
+
+              <ul style="margin-top: 50px;"><md-icon
+              aria-label="Point mutations"
+              md-font-library="material-icons" style="margin-bottom: 4px;">
+              sort
+              </md-icon> <i>Hover over bars above for interpretation</i></ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div layout="row" flex>
+        <div class="md-padding" layout="col-sm-6 col-md-6" flex>
+          <div class="card" flex>
+            <div class="card-header bgmd-blue">
+            <div style="text-align:right">
+                <span data-toggle="tooltip" title="The alteration is of uncertain clinical utility, but may have a role as suggested by at least one of the following:
+                demonstration of association with response to treatment in this cancer type in preclinical studies (e.g., in vitro studies
+                or animal models); alteration in a biochemical pathway that has other known, therapeutically-targetable alterations;
+                alteration in a highly conserved region of the protein predicted, in silico, to alter protein function; or selection of an
+                investigational therapy for a different cancer type."
+                class="glyphicon glyphicon-info-sign"></span>
+                </div>
+              <h2>
+                Tier 3
+              </h2>
+            </div>
+            <div class="card-body card-padding">
+
+              <ul><b>BUB1B c.767G>A (p.R256K), exon 7</b></ul>
+              <ul><span><font color="#FFC107"><b>51%</b></font></span> of 99 reads</ul>
+              <ul><div class="pctbar-textL">0%</div>
+              <div class="pctbar-textM">50%</div>
+              <div class="pctbar-textR">100%</div></ul>
+              <ul><div data-toggle="tooltip" data-placement="bottom" title="If the tumor is very pure, this may represent a heterozygous alteration. However, one should also consider whether this is actually a rare germline variant not filtered out by existing public germline databases." class="pctbar-barL" style="background:#FFC107;"></div>
+              </ul>
+
+              <ul style="margin-top: 50px;"><md-icon
+              aria-label="Point mutations"
+              md-font-library="material-icons" style="margin-bottom: 4px;">
+              sort
+              </md-icon> <i>Hover over bars above for interpretation</i></ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div layout="col-sm-6 col-md-6" class="md-padding" flex>
+          <div class="card" flex>
+            <div class="card-header bgmd-blue">
+            <div style="text-align:right">
+            <span data-toggle="tooltip" title="The alteration is novel or its significance has not been studied in cancer." class="glyphicon glyphicon-info-sign"></span>
+            </div>
+              <h2>
+                Tier 4
+                </h2>
+            </div>
+            <div class="card-body card-padding">
+
+              <ul><b>MLL2 c.14546G>A (p.S4849N), exon 47 </b></ul>
+              <ul><font color="#8BC34A"><b>60%</b></font> of 113 reads</ul>
+              <ul><div class="pctbar-textL">0%</div>
+              <div class="pctbar-textM">50%</div>
+              <div class="pctbar-textR">100%</div></ul>
+              <ul><div data-toggle="tooltip" data-placement="bottom" title="This alteration may be homozygous, meaning that this alteration affects one copy of the gene, and the other copy has been lost." class="pctbar-barL" style="background:#8BC34A; width: 60px;"></div></ul>
+
+              <ul style="margin-top: 50px;"><md-icon
+              aria-label="Point mutations"
+              md-font-library="material-icons" style="margin-bottom: 4px;">
+              sort
+              </md-icon> <i>Hover over bars above for interpretation</i></ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Mutations of clinical relevance
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+           <p>Specimen was <font color="#F44336"><b>negative</b></font> for mutations in the following genes with clinical relevance for this tumor type: <b>BRCA1</b>, <b>BRCA2</b>, <b>ERBB2</b>, <b>PALB2</b>, <b>PTEN</b>.</p>
+        </div>
+      </div>
+
+      <div class="block-header">
+        <h2 id="cnv">
+          <md-icon
+            aria-label="Copy Number Variations"
+            md-font-library="material-icons">
+            line_style
+          </md-icon>
+          Copy number variations
+            <span data-toggle="tooltip" title="Variations can be either amplifications (in red) caused by extra copies of a gene or deletions (in blue) resulting from heterozygous or homozygous removal of that gene." class="glyphicon glyphicon-info-sign"></span>
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Alterations
+            <small>Copy number alterations coloured by effect intensity</small>
+          </h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-inner table-vmiddle">
+            <thead>
+              <tr>
+                <th>Band</th>
+                <th>Gene</th>
+                <th>Alteration</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr class="cna-gain-high">
+                  <td>12q14.1</td>
+                  <td>CDK4</td>
+                  <td>High copy number gain</td>
+                </tr>
+                <tr class="cna-gain-high">
+                  <td>13q13.1</td>
+                  <td>BRCA2</td>
+                  <td>High copy number gain</td>
+                </tr>
+                <tr class="cna-gain-high">
+                  <td>17q12</td>
+                  <td>ERBB2</td>
+                  <td>High copy number gain</td>
+                </tr>
+                <tr class="cna-gain-high">
+                  <td>17q12</td>
+                  <td>IKZF3</td>
+                  <td>High copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>1p12</td>
+                  <td>NOTCH2</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>1q21.3</td>
+                  <td>MCL1</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>1q23.3</td>
+                  <td>SDHC</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>4p13</td>
+                  <td>PHOX2B</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q11.21</td>
+                  <td>PRKDC</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q13.1</td>
+                  <td>MYBL1</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q21.3</td>
+                  <td>NBN</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q24.11</td>
+                  <td>RAD21</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q24.11</td>
+                  <td>EXT1</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q24.21</td>
+                  <td>MYC</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>8q24.3</td>
+                  <td>PTK2</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>9p24.1</td>
+                  <td>CD274</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>9p24.1</td>
+                  <td>PDCD1LG2</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>13q12.2</td>
+                  <td>FLT3</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>13q12.2</td>
+                  <td>FLT1</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-gain-low">
+                  <td>17q23.2</td>
+                  <td>BRIP1</td>
+                  <td>Low copy number gain</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>4p16.3</td>
+                  <td>FGFR3</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>8p12</td>
+                  <td>WRN</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>8p11.23</td>
+                  <td>FGFR1</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>9p24.1</td>
+                  <td>JAK2</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>22q11.21</td>
+                  <td>MAPK1</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>22q11.22</td>
+                  <td>PRAME</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>22q11.23</td>
+                  <td>SMARCB1</td>
+                  <td>Single copy deletion</td>
+                </tr>
+                <tr class="cna-loss-single">
+                  <td>8p23.1  </td>
+                  <td>GATA4</td>
+                  <td>Single copy deletion</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="assets/breast_cnv.png" style="width: 100%">
+        <div class="card-body card-padding">
+           <ul> <b>Figure Legend </b></ul>
+           <ul><p> Plot of copy number variation by chromosomes which are color-coded. Sex chromosomes are excluded from the analysis. The vertical axis is the ratio of number of reads for this specimen and a panel of normals in log base 2 scale. A value of 0 denotes no difference from normal (diploid). When the sample contains 100% tumor cells, a value of -1 equals to 1 copy loss and 0.58 is 1 copy gain. The sensitivity and specificity of copy number variation evaluation by next-generation sequencing is affected by several factors, including the tumor percentage, ploidy, clonal heterogeneity, and the GC content of the gene of interest. For example, a sample with 20% tumor cells having a 5-copy amplification of a gene is indistinguishable from a sample with 100% tumor cells with 1 copy gain of the same gene. Confirmation of the copy number variation findings by Next-Gen Sequencing with a different testing platform is recommended</p></ul>
+        </div>
+      </div>
+
+      <!-- Chromosomal rearrangements -->
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Chromosomal Rearrangement
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+           <p>Translocation review identifies an interchromosomal rearrangement involving <b>SFXN2</b> at intron 1 and <b>EWSR1</b> at intron 7 (breakpoints: 10:104479502,22:29680641). The significance of this fusion is <b>unknown</b> in this context. </p>
+        </div>
+      </div>
+
+
+      <!-- Guidance -->
+      <div class="block-header">
+        <h2 id="guidance">
+          <md-icon
+            aria-label=""
+            md-font-library="material-icons">
+            compare_arrows
+          </md-icon>
+          Guidance
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Lab Contact Information
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+           <p>
+           For detailed methodology and protocol, please contact the Center for Advanced Molecular Diagnostics (857-307-1500).
+           </p>
+        </div>
+      </div>
+
+      <!-- Methodology -->
+      <div class="block-header">
+        <h2 id="methodology">
+          <md-icon
+            aria-label="Methodology"
+            md-font-library="material-icons">
+            pageview
+          </md-icon>
+          Supplemental Information
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Methodology
+            <small>We have developed a cancer genomic assay to detect somatic mutations, copy number variations and structural variants in tumor DNA extracted from fresh, frozen or formalin-fixed paraffin-embedded samples. DNA is isolated from tissue containing at least 20% tumor nuclei and analyzed by massively parallel sequencing using a solution-phase Agilent SureSelect hybrid capture kit and an Illumina HiSeq 2500 sequencer.</small>
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+          <p>The OncoPanel assay surveys exonic DNA sequences of 299 cancer genes and 113 introns across 35 genes for rearrangement detection. The 299 genes are: 
+          <ul><small>ABL1, AKT1, AKT2, AKT3, ALK, ALOX12B, APC, AR, ARAF, ARID1A, ARID1B, ARID2, ASXL1, ATM, ATRX, AURKA, AURKB, AXL, B2M, BAP1, BCL2, BCL2L1, BCL2L12, BCL6, BCOR, BCORL1, BLM, BMPR1A, BRAF, BRCA1, BRCA2, BRD4, BRIP1, BUB1B, CADM2, CARD11, CBL, CBLB, CCND1, CCND2, CCND3, CCNE1, CD274, CD58, CD79B, CDC73, CDH1, CDK1, CDK2, CDK4, CDK5, CDK6, CDK9, CDKN1A, CDKN1B, CDKN1C, CDKN2A, CDKN2B, CDKN2C, CEBPA, CHEK2, CIITA, CREBBP, CRKL, CRLF2, CRTC1, CRTC2, CSF1R, CSF3R, CTNNB1, CUX1, CYLD, DDB2, DDR2, DEPDC5, DICER1, DIS3, DMD, DNMT3A, EED, EGFR, EP300, EPHA3, EPHA5, EPHA7, ERBB2, ERBB3, ERBB4, ERCC2, ERCC3, ERCC4, ERCC5, ESR1, ETV1, ETV4, ETV5, ETV6, EWSR1, EXT1, EXT2, EZH2, FAM46C, FANCA, FANCC,FANCD2, FANCE, FANCF, FANCG, FAS, FBXW7, FGFR1, FGFR2, FGFR3, FGFR4, FH, FKBP9, FLCN, FLT1, FLT3, FLT4, GATA3, GATA4, GATA6, GLI1, GLI2, GLI3, GNA11, GNAQ, GNAS, GNB2L1, GPC3, GSTM5, H3F3A, HNF1A, HRAS, ID3,IDH1, IDH2, IGF1R, IKZF1, IKZF3, INSIG1, JAK2, JAK3, KCNIP1, KDM5C, KDM6A, KDM6B, KDR, KEAP1, KIT, KRAS, LINC00894, LMO1, LMO2, LMO3, MAP2K1, MAP2K4, MAP3K1, MAPK1, MCL1, MDM2, MDM4, MECOM, MEF2B, MEN1, MET, MITF, MLH1, MLL, MLL2, MPL, MSH2, MSH6, MTOR, MUTYH, MYB, MYBL1, MYC, MYCL1, MYCN, MYD88, NBN, NEGR1, NF1, NF2, NFE2L2, NFKBIA, NFKBIZ, NKX2-1, NOTCH1, NOTCH2, NPM1, NPRL2, NPRL3, NRAS, NTRK1, NTRK2, NTRK3, PALB2, PARK2, PAX5, PBRM1, PDCD1LG2, PDGFRA, PDGFRB, PHF6, PHOX2B, PIK3C2B, PIK3CA, PIK3R1, PIM1, PMS1, PMS2, PNRC1, PRAME, PRDM1, PRF1, PRKAR1A, PRKCI, PRKCZ, PRKDC, PRPF40B, PRPF8, PSMD13, PTCH1, PTEN, PTK2, PTPN11, PTPRD, QKI, RAD21, RAF1, RARA, RB1, RBL2, RECQL4, REL, RET, RFWD2, RHEB,RHPN2, ROS1, RPL26, RUNX1, SBDS, SDHA, SDHAF2, SDHB, SDHC, SDHD, SETBP1, SETD2, SF1, SF3B1, SH2B3, SLITRK6, SMAD2, SMAD4, SMARCA4, SMARCB1, SMC1A, SMC3, SMO, SOCS1, SOX2, SOX9, SQSTM1, SRC, SRSF2, STAG1, STAG2, STAT3, STAT6, STK11, SUFU, SUZ12, SYK, TCF3, TCF7L1, TCF7L2, TERC, TERT, TET2, TLR4, TNFAIP3, TP53, TSC1, TSC2, U2AF1, VHL, WRN, WT1, XPA, XPC, XPO1, ZNF217, ZNF708, ZRSR2</small></ul>
+          </p>
+          <p>Intronic regions are tiled on specific introns of:
+           <ul><small>ABL1, AKT3, ALK, BCL2, BCL6, BRAF, CIITA, EGFR, ERG, ETV1, EWSR1, FGFR1, FGFR2, FGFR3, FUS, IGH@, IGK@, IGL@, JAK2, MLL, MYC, NPM1, NTRK1, PAX5, PDGFRA, PDGFRB, PPARG, RAF1, RARA, RET, ROS1, SS18, TRA@, TRB@, TRG@.TMPRSS2</small></ul>
+           </p>
+           <i><small>These tests were developed and their performance characteristics determined by the Molecular Diagnostics Laboratory, Brigham and Women’s Hospital. They have not been cleared or approved by the U.S. Food and Drug Administration. The FDA has determined that such clearance or approval is not necessary.
+           </small></i>
+        </div>
+      </div>
+
+
+      <!-- References -->
+      <div class="block-header">
+        <h2 id="references">
+          <md-icon
+            aria-label="Methodology"
+            md-font-library="material-icons">
+            list
+          </md-icon>
+          References
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            Reference list
+          </h2>
+        </div>
+        <div class="card-body card-padding">
+          <p>Wagle et al. High-throughput detection of actionable genomic alterations in clinical tumor samples by targeted, massively parallel sequencing. 
+          <ul>Cancer Discov. 2012 Jan;2(1):82-93.</ul>
+</p>
+        </div>
+      </div>
+
+
+
+    </div> <!-- Main container -->
+  </section>
+</section>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>

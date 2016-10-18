@@ -1,0 +1,112 @@
+md-content.layout-padding-extra {
+  padding: 15px 25px!important;
+}
+
+md-tabs.genomic-filters {
+  min-height: 500px;
+}
+
+md-tabs.genomic-filters > md-tab {
+  /*min-height: 620px;*/
+}
+
+/* Disable selection of tab label headers */
+md-tab-label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+md-input-container.md-icon-float > md-icon[is-autocomplete] {
+  margin-top : -15px;
+}
+
+/* Genomic filter badge */
+.geneBadge {
+  border-radius: 3px!important;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.30);
+  min-width: 75px;
+  text-transform: uppercase;
+  /* No select for badges */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+md-tabs[md-border-bottom] md-tabs-wrapper {
+  border-width: 0 0 8px;
+  border-style: solid;
+}
+
+md-tabs > md-tabs-wrapper > md-tabs-canvas >
+ md-pagination-wrapper >
+ md-tab-item.md-tab.md-active > md-icon {
+  color: white;
+}
+
+.tab-navigation.spaced {
+  margin-top: 55px;
+}
+
+/* Neutralize default md-chips box shadow for genomic filter badges */
+genomic-filter-badge > md-chips > md-chips-wrap {
+  box-shadow: none!important;
+}
+
+md-chips.geneBadgeContainer > md-chips-wrap {
+  box-shadow: none!important;
+}
+
+md-input-container.md-icon-float > label.mm-split-line {
+  top: -16px!important;
+}
+
+/*
+ * Plotly Filter graph
+ */
+#plotResults {
+  padding: 50px;
+  display: block;
+}
+
+#emptyPlot > p {
+  margin-top: 40%;
+  text-align: center;
+  display: block;
+}
+
+#loadingPlot {
+  display: none;
+}
+
+#loadingPlot > p {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 990px) {
+  #emptyPlot > p, #noPlotData > p {
+    margin-top: 10%;
+    margin-bottom: 20%;
+  }
+}
+
+#noPlotData {
+  display: none;
+}
+
+.geneOptionsAvailable {
+  transition: all 2s linear;
+  display: block;
+}
+
+.geneOptionsHidden {
+  display: none;
+  opacity: 0;
+}

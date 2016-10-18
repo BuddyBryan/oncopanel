@@ -1,0 +1,38 @@
+/*
+ * Pastel base colors for statuses
+ */
+
+/*
+ * Match is flagged
+ */
+table[md-data-table] > tbody > tr[matchstatus="0"] {
+  /*background-color: rgba(164,222,165,0.5);*/
+}
+
+/*
+ * Match is archived
+ */
+table[md-data-table] > tbody > tr[matchstatus="1"] {
+  background-color: rgba(164,192,222,0.5);
+}
+
+/*
+ * Match is flagged
+ */
+table[md-data-table] > tbody > tr[matchstatus="2"] {
+  background-color: rgba(222,192,165,0.5);
+}
+
+/*
+ *
+ */
+md-data-table-toolbar > h3 {
+  width: 100%;
+}
+
+md-data-table-toolbar > form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+}

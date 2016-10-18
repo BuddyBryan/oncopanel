@@ -1,0 +1,82 @@
+<!-- The main genomic filter content -->
+<section id="main"
+         layout="row"
+         layout-fill
+         class="md-body">
+    <section id="content">
+      <div class="container">
+        <div class="block-header">
+          <h2 id="patientRecord">
+            <md-icon aria-label="Genomic Filters"
+                     md-font-library="material-icons">
+              filter_list
+            </md-icon>
+            Genomic Filters
+          </h2>
+          <ul class="actions">
+            <li>
+              <md-button class="md-raised md-primary" ng-click="showWizardDialog()">
+                New filter
+              </md-button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>
+              Registered Genomic Filters
+              <small>Overview of filters that have been registered to search for matching records</small>
+            </h2>
+          </div>
+          <div class="card-body card-padding">
+            <md-data-table-container>
+                <table class="table table-inner table-vmiddle" md-data-table md-progress="deferred">
+                  <thead md-order="sortOrder" md-trigger="onOrderChange">
+                  <tr>
+                    <th name="Filter" order-by="label"></th>
+                    <th name="Badge"></th>
+                    <th colspan="2" numeric name="Actions" order-by="status"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr md-auto-select
+                      ng-repeat="filter in filters">
+                    <td>
+                      <div layout="column">
+                        <span class="td-lead">{{ filter.atomicRule.label }}</span>
+                        <span class="td-small">{{ filter.atomicRule.description }}</span>
+                      </div>
+                    </td>
+
+                    <td>
+                      <genomic-filter-badge filter="filter"/>
+                    </td>
+                    <td style="width: 20px; padding:15px 5px 0px 5px;">
+                      <div layout="row" layout-align="end-center">
+                        <md-icon aria-label="Edit filter" ng-click="loadEditGenomicFilter(filter)" md-font-library="material-icons">mode_edit</md-icon>
+                      </div>
+                    </td>
+                    <td style="width: 60px; padding:0px 5px;">
+                      <div layout="row" layout-align="end-center">
+                        <md-switch aria-label="Toggle filter status"
+                                   ng-model="filter.status"
+                                   ng-change="statusChange(filter)";
+                                   ng-true-value="1"
+                                   ng-false-value="0">
+                          <strong>
+                            <i>{{ filterStatuses[filter.status].status }}</i>
+                          </strong>
+                        </md-switch>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+            </md-data-table-container>
+            <md-data-table-pagination md-limit="query.size" md-page="currentPage" md-total="{{totalElements}}" md-trigger="onPaginationChange"></md-data-table-pagination>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>

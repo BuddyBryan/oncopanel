@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dana-Farber Cancer Institute - MatchMiner</title>
+    <meta name="description" content="Dana-Farber Cancer Institute - algorithmically matching genomic profiles to open clinical trials.">
+    <meta name="viewport" content="width=device-width">
+    <!-- Load material design icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-color-picker/angularjs-color-picker.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/filters.css">
+    <link rel="stylesheet" href="styles/mdcolors.css">
+    <link rel="stylesheet" href="styles/toast.css">
+    <link rel="stylesheet" href="styles/patients.css">
+    <link rel="stylesheet" href="styles/md-data-table.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="matchminerUiApp">
+    <!--[if lte IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!--<header ng-include="'scripts/components/navbar/navbar.html'"> </header>-->
+
+    <section ng-view="">
+
+    </section>
+    <!--<footer class="footer">
+      <span>Dana-Farber Cancer Institute - 2015</span>
+    </footer> -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/tinycolor/tinycolor.js"></script>
+    <script src="bower_components/angularjs-color-picker/angularjs-color-picker.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+    <script src="bower_components/angular-q-spread/dist/q-spread.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/config.js"></script>
+        <script src="scripts/app/app.js"></script>
+        <script src="scripts/app/main/main.js"></script>
+        <script src="scripts/app/matches/matches.js"></script>
+        <script src="scripts/app/patients/patients.js"></script>
+        <script src="scripts/app/filters/filters.js"></script>
+        <script src="scripts/app/about/about.js"></script>
+
+        <!-- Components -->
+        <script src="scripts/components/navbar/navbar.js"></script>
+
+        <!-- Services -->
+        <script src="scripts/components/matches/matches.service.js"></script>
+        <script src="scripts/components/filters/filters.service.js"></script>
+        <script src="scripts/components/variant/variant.service.js"></script>
+        <script src="scripts/components/utilities/utilities.service.js"></script>
+        <script src="scripts/components/patients/patients.service.js"></script>
+        <script src="scripts/components/notifications/toast.service.js"></script>
+
+        <!-- Directives -->
+        <script src="scripts/components/filters/filters.directives.js"></script>
+
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <!-- endbuild -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </body>
+</html>

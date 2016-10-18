@@ -1,0 +1,645 @@
+section {
+  width: 100%;
+}
+
+*, :active, :hover {
+  outline: none!important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0)!important;
+}
+
+*, button, input, i, md-icon, a {
+  webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+#main {
+  position: relative;
+}
+
+.md-body {
+   font-weight: 400;
+   position: relative;
+   color: #5e5e5e;
+   background-color: #edecec;
+   margin: 0;
+   min-height:calc(100vh - 60px);
+}
+
+#content {
+   padding-top: 35px;
+   padding-bottom: 110px;
+}
+
+@media (min-width: 1200px) {
+  body #content > .container {
+    width: calc(100% - 30px);
+    max-width: 1170px;
+  }
+
+  .container {
+    width : 1170px;
+  }
+}
+
+body #content > .container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .block-header {
+    padding: 0 22px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .block-header {
+    padding: 0 18px;
+  }
+}
+
+/*
+ * Block header and action styling
+ */
+.block-header {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.block-header h2 {
+  font-size: 22px;
+  color: #777;
+  margin: 0
+  top: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.block-header h2 md-icon {
+  font-size: 130%;
+  margin-top: -10px;
+  margin-right: 5px;
+}
+
+.block-header .actions {
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  z-index: 5;
+}
+
+.actions {
+  list-style: none;
+  padding: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+.actions > li {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.actions > li > a,
+ .actions > li > md-icon,
+ .actions > li > md-button {
+
+  width: 30px;
+  height: 30px;
+  line-height: 35px;
+  display: inline-block;
+  position: relative;
+}
+
+.dropup, .dropdown {
+  position: relative;
+}
+
+/*
+ * The content main cards
+ */
+
+.card {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.30);
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .card-header {
+    padding: 23px 25px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card-header {
+    padding: 18px;
+  }
+}
+
+.card-header {
+  position: relative;
+}
+
+.card-header[class^='bgmd'],div[class*=' bgmd'],
+ .card-header[class^='bgmd'],div[class*=' bgmd'] h2,
+  .card-header[class^='bgmd'],div[class*=' bgmd'] h2 small,
+   .card-header[class^='bgmd'],div[class*=' bgmd'] h2 md-icon {
+     color: #fff;
+ }
+
+.card-header h2 {
+  margin: 0;
+  line-height: 100%;
+  font-size: 22px;
+  font-weight: 450;
+}
+
+.card-header h2 md-icon {
+  font-size: 130%;
+  margin-top: -12px;
+  margin-right: 5px;
+}
+
+.card-header h2 small {
+  display: block;
+  margin-top: 5px;
+  color: #aeaeae;
+  line-height: 160%;
+}
+
+.card-header .actions {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+  top: 15px;
+}
+
+.card-body {
+  padding-bottom: 1px;
+}
+
+/*
+ * Accented info cards
+ */
+
+.mini-charts-item {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.30);
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.mini-charts-item > .clearfix {
+  position: relative;
+  z-index: 1;
+}
+
+.mini-charts-item .chart {
+  padding: 15px;
+  float: left;
+}
+
+.mini-charts-item .chart > md-icon {
+  font-size: 50px;
+  color: #fff;
+}
+
+.mini-charts-item .count {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 18px 18px;
+}
+
+.mini-charts-item .count > h2,
+ .mini-charts-item .count > small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mini-charts-item .count > h2 {
+  margin: 0;
+  line-height: 100%;
+  font-size: 22px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.mini-charts-item .count > small {
+  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*
+ * Patient info charts
+ */
+
+@media screen and (min-width: 1200px) {
+  .ps-block {
+    padding: 40px 42px 0;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .card > .card-body > .ps-block:first-child {
+      padding: 0px 20px 0;
+  }
+
+  .ps-block {
+    padding: 30px 20px 0;
+  }
+}
+
+.ps-block {
+  margin-bottom: 20px;
+}
+
+.ps-block:last-child {
+  margin-bottom: 50px;
+}
+
+.ps-block .ps-header {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.ps-block .ps-header h2 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.ps-block .ps-header h2 md-icon {
+  margin-left: 30px;
+}
+
+.ps-block .ps-header .actions {
+  position: absolute;
+  top: -2px;
+  right: 0;
+}
+
+.card-body .ps-body {
+  font-size:120%;
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+dt {
+  font-weight: 500;
+}
+
+.dl-horizontal dt {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    float: left;
+     width: 190px;
+     clear: left;
+     text-align: right;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+  }
+
+  .dl-horizontal dd {
+    margin-left: 210px;
+  }
+}
+
+/*
+ * Sidebar
+ */
+#sidebar {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(51,51,51,0.38);
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0;
+  transition: all;
+  -webkit-transition: all;
+  transition-duration: 300ms;
+
+}
+
+@media (min-width: 1200px) {
+  #main.sw-toggled #sidebar {
+    position: static;
+    transform: translate3d(0,0,0)!important;
+    opacity: 1!important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  }
+}
+
+#sidebar .sidebar-inner {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#sidebar .sidebar-inner > md-toolbar {
+  background-color: #fff;
+}
+
+#sidebar .profile-menu > a {
+  display: block;
+  height: 75px;
+  margin-top: 20px;
+  margin-right: 40px;
+  background: url(../assets/dfci_logo.gif) no-repeat center center;
+  background-size: 75%;
+}
+
+#sidebar .profile-menu > .profile-info {
+  background-color: rgba(0, 0, 0, 0.38);
+  padding: 7px 14px;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+  text-align: right;
+}
+
+#sidebar .main-menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0 0;
+}
+
+#sidebar .main-menu > li {
+  padding: 14px 20px 14px 20px;
+  display: block;
+  color: #4C4C4C;
+  font-weight: 500;
+  position: relative;
+}
+
+#sidebar .main-menu > li.active, li:hover {
+  color: #262626;
+  background-color: #F4F4F4;
+}
+
+#sidebar .main-menu > li.sub-menu > ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar .main-menu > li.sub-menu > ul > li {
+  color: #7F7F7F;
+  padding: 8px 20px 8px 50px;
+  font-weight: 500;
+  display: block;
+}
+
+#sidebar .main-menu > li.sub-menu > ul > li:last-child {
+  padding-bottom: 16px;
+}
+
+#sidebar .main-menu > li > a > md-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 20px;
+  top: 0;
+  width: 25px;
+  text-align: center;
+  padding: 13px 0;
+}
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 0px !important;
+    width: 320px!important;
+    max-width: none !important;
+    padding-right: 4vh;
+}
+
+/*
+ * Table
+ */
+.table.table-inner {
+  border: 0;
+}
+
+.table > thead > tr > th {
+  background-color: #fff;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #333;
+  border-width: 3px;
+  text-transform: uppercase;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.table > thead > tr > th:first-child,
+ .table > tbody > tr > th:first-child,
+  .table > tfoot > tr > th:first-child,
+   .table > thead > tr > td:first-child,
+    .table > tbody > tr > td:first-child,
+     .table > tfoot > tr > td:first-child
+ {
+    padding-left: 30px;
+ }
+
+.cna-gain-high {
+  background-color: rgba(244, 67, 64, 0.33)!important;
+  font-weight: 600;
+}
+
+.cna-gain-low {
+  background-color: rgba(244, 67, 64, 0.2)!important;
+  font-weight: 400;
+}
+
+.cna-loss-two {
+  background-color: rgba(33, 150, 243, 0.33)!important;
+  font-weight: 600;
+}
+
+.cna-loss-single {
+  background-color: rgba(33, 150, 243, 0.2)!important;
+  font-weight: 400;
+}
+
+
+/*
+ * Comments and observations
+ */
+
+@media screen and (min-width: 768px) {
+  .card-body.card-padding {
+    padding: 23px 25px;
+  }
+}
+
+.media:first-child {
+  margin-top: 0;
+}
+
+.media > .pull-left {
+  padding-right: 15px;
+}
+
+.media-body {
+  display: block;
+  zoom: 1;
+  width: auto;
+}
+
+/*
+ * Dialog headers
+ */
+.dialog-header {
+  font-size: 22px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.td-lead {
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.td-small {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .td-lead {
+    font-size: 16px;
+  }
+
+  .td-small {
+    font-size: 14px;
+  }
+}
+
+.glyphicon.glyphicon-info-sign {
+    font-size: 20px;
+}
+
+.glyphicon.glyphicon-warning-sign {
+    font-size: 30px;
+}
+
+.glyphicon.glyphicon-check {
+    font-size: 30px;
+}
+
+.glyphicon.glyphicon-exclamation-sign {
+    font-size: 30px;
+}
+
+.glyphicon.glyphicon-remove {
+    font-size: 20px;
+}
+
+.glyphicon.glyphicon-adjust {
+    font-size: 30px;
+}
+
+.span-icon {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+
+.supsub {position: absolute}
+.subscripter {color: #E65100; display:block; position:relative; left:5px; bottom: -15px}
+.superscripter {color: red; display:block; position:relative; left:5px; top: 2.5px}
+
+
+.pctbar-barL {
+  height: 6px;
+  width: 50px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-right: 0px;
+  margin-left:0px;
+  background: black;
+  left: 200px;
+  z-index:0;
+  opacity: 1;
+}
+
+.pctbar-barR {
+  height: 10px;
+  width: 100px;
+  margin-top: 0px;
+  margin-bottom: 7px;
+  margin-right: 0px;
+  margin-left:0px;
+  left: 200px;
+  border: 2px solid black;
+  z-index: 2;
+}
+
+.pctbar-barL:hover {
+  opacity:0.5;
+}
+
+.pctbar-textL {
+  height: 11px;
+  font-size: 10px;
+  float: left;
+  bottom: -5px;
+  position: relative;
+  left: 0px;
+  opacity: 0.5;
+}
+
+.pctbar-textM {
+  height: 11px;
+  font-size: 10px;
+  margin: 0px;
+  bottom: -5px;
+  position: relative;
+  float: left;
+  left: 30px;
+  opacity: 0.5;
+}
+
+.pctbar-textR {
+  height: 11px;
+  font-size: 10px;
+  bottom: -5px;
+  margin: 0px;
+  position: relative;
+  float: left;
+  left: 58px;
+  opacity: 0.5;
+}

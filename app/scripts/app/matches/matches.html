@@ -1,0 +1,97 @@
+<!-- The main genomic filter results content -->
+<section id="main"
+         layout="row"
+         layout-fill
+         class="md-body">
+  <section id="content">
+    <div class="container">
+      <div class="block-header">
+        <h2 id="patientRecord">
+          <md-icon aria-label="Genomic Filter Matches"
+                   md-font-library="material-icons">
+            play_for_work
+          </md-icon>
+          Matches
+        </h2>
+      </div>
+
+      <div class="card">
+        <div class="card-body card-padding">
+          <!-- Default header with options-->
+          <md-data-table-toolbar ng-hide="filter.show || selectedMatches.length">
+            <h3></h3>
+            <button class="md-icon-button md-button md-default-theme pull-right" ng-click="filter.show = true" tabindex="0">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+            <md-input-container style="margin-right: 10px;">
+              <label>Status</label>
+              <md-select ng-model="query.matchStatus" placeholder="Status" ng-change="loadMatches(true)">
+                <md-option ng-value="sid"
+                           ng-repeat="(sid, status) in matchStatusesState">{{status}}</md-option>
+              </md-select>
+            </md-input-container>
+          </md-data-table-toolbar>
+
+          <md-data-table-toolbar ng-show="filter.show && !selectedMatches.length">
+            <form>
+              <label class="glyphicon glyphicon-search"></label>
+              <input type="text" ng-model="query.filter" placeholder="search" class="ng-pristine ng-valid ng-touched" tabindex="0" aria-invalid="false">
+            </form>
+          </md-data-table-toolbar>
+
+          <md-data-table-toolbar ng-show="selectedMatches.length">
+            <h4>{{ selectedMatches.length || 0 }} out of {{ totalElements || 0 }} selected</h4>
+          </md-data-table-toolbar>
+
+          <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+              <thead md-order="sortOrder" md-trigger="onOrderChange">
+              <tr>
+                <th name="MM #" order-by="matchId"></th>
+                <th name="Cancer diagnosis" order-by="oncotreeDiagnosis"></th>
+                <!--<th name="Cancer type" order-by="oncotreeDiagnosis"></th>-->
+                <th name="Genomic type" order-by="oncotreeDiagnosis"></th>
+                <th name="Gene symbol" order-by="geneId"></th>
+                <th name="Genomic alteration" order-by="genomicAlteration"></th>
+                <th numeric name="Action" order-by="status"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr md-auto-select
+                  ng-repeat="match in matches"
+                  matchstatus="{{match.status}}">
+                <td><a ng-href="#">MM-{{ match.matchId }}</a></td>
+                <td>{{ match.oncotreeDiagnosis || '-' }}</td>
+                <!--<td>{{ match.oncotreeType || '(MetaMainType)' }}</td>-->
+                <td>
+                  <genomic-filter-badge filter="genomicFilters[match.genomicFilterId]"/>
+                </td>
+                <td>{{ geneMap[match.geneId] || '-' }}</td>
+                <td>{{ match.variantEffect || '-' }}</td>
+                <td>
+                  <md-select ng-model="match.matchStatus"
+                             placeholder="{{ matchStatusesState[match.matchStatus]}}"
+                             ng-change="updateStatus(match)">
+                    <md-option>
+                      <div class="md-text"> {{ matchStatusChange[match.matchStatus].state}}</div>
+                      <div class="md-ripple-container"> </div>
+                    </md-option>
+                    <md-option ng-value="sid"
+                               ng-repeat="(sid, changeState) in matchStatusChange[match.matchStatus].action">{{changeState}}</md-option>
+                  </md-select>
+                  <!--<md-select ng-model="match.status" placeholder="Status" ng-change="updateStatus(match)">
+                    <md-option ng-value="sid"
+                               ng-repeat="(sid, status) in matchStatuses">{{status}}</md-option>
+                  </md-select>-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </md-data-table-container>
+          <md-data-table-pagination md-limit="query.size" md-page="currentPage" md-total="{{totalElements}}" md-trigger="onPaginationChange"></md-data-table-pagination>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

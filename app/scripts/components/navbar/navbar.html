@@ -1,0 +1,30 @@
+<div class="header" ng-controller="NavbarCtrl">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">MatchMiner</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
+          <li ng-class="{ active: isActive('/matches')}"><a ng-href="#/matches">Matches </a></li>
+          <li ng-class="{ active: isActive('/filters')}" ><a ng-href="#/filters">Genomic Filters</a></li>
+          <li ng-class="{ active: isActive('/patientsB')}" ><a ng-href="#/patientsB">Breast</a></li>
+          <li ng-class="{ active: isActive('/patientsL')}" ><a ng-href="#/patientsL">Lung</a></li>
+          <li ng-class="{ active: isActive('/patientsM')}" ><a ng-href="#/patientsM">Melanoma</a></li>
+          <li ng-class="{ active: isActive('/contact')}" ><a ng-href="#/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

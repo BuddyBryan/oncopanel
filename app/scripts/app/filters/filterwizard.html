@@ -1,0 +1,359 @@
+<md-dialog aria-label="Genomic Filter Wizard" ng-controller="FilterWizardCtrl">
+  <ng-form role="form" name="filterForm" form-on-change="fetchIntermediateFilterResults(genomicFilter)" critical-match-change="true" novalidate>
+    <div layout layout-sm="column" layout-wrap>
+      <md-toolbar layout="row" flex="100">
+        <div class="md-toolbar-tools">
+          <h2 class="dialog-header">Register new genomic filter</h2>
+          <span flex> </span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-font-library="material-icons">clear</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <div flex-sm="100" flex-gt-sm="60">
+        <md-dialog-content style="min-height:500px;">
+          <md-tabs class="md-primary genomic-filters md-dynamic-height"
+                   md-selected="selectedTab"
+                   id="genomicFilterWizard"
+                   md-no-disconnect="true">
+            <md-tab id="genomicsTab">
+              <md-tab-label>
+                <md-icon md-font-library="material-icons" ng-if="selectedTab == 0">navigate_next</md-icon>
+                Genomics
+              </md-tab-label>
+              <md-tab-body>
+                <md-content class="md-padding">
+                  <h2 class="md-title" style="margin-bottom: 25px;">Genomic attributes</h2>
+
+                  <md-input-container class="md-icon-float md-block" flex>
+                    <label></label>
+                    <md-icon is-autocomplete md-font-library="material-icons">settings_ethernet</md-icon>
+                    <md-autocomplete
+                      md-delay="200"
+                      md-no-caching="true"
+                      md-input-name="geneAutocomplete"
+                      md-select-on-match=true
+                      md-search-text="data.searchText"
+                      md-selected-item="data.selectedGene"
+                      md-selected-item-change="_geneAutocompleteChange(gene)"
+                      md-item-text="gene.hugoGeneSymbol"
+                      md-items="gene in loadGeneData(data.searchText)"
+                      placeholder="Gene"
+                      ng-required="filterForm.cancerType.$invalid"
+                      style="margin-left:35px;">
+                      <span md-highlight-text="data.searchText">{{gene.hugoGeneSymbol}}</span>
+                      <md-not-found>
+                        No matches found for "{{data.searchText}}".
+                      </md-not-found>
+                    </md-autocomplete>
+                    <div ng-if="!genomicFilter.patientRule.cancerType && !genomicFilter.variantRule.gene" ng-messages="filterForm.geneAutocomplete.$error" role="alert" multiple>
+                      <div ng-message="required">You must atleast select a gene or a cancer type.</div>
+                    </div>
+                  </md-input-container>
+
+                  <div layout layout-sm="column"
+                       ng-class="{
+                      'geneOptionsAvailable' : genomicFilter.variantRule.entrezGeneId,
+                      'geneOptionsHidden' : !genomicFilter.variantRule.entrezGeneId
+                    }">
+                      <md-input-container flex class="md-float-icon md-block md-input-has-messages">
+                        <label>Protein change</label>
+                        <md-icon md-font-library="material-icons" style="margin-top:6px;">donut_large</md-icon>
+                        <md-autocomplete
+                          md-delay="200"
+                          md-selected-item-change="fetchIntermediateFilterResults(genomicFilter)"
+                          ng-disabled="!genomicFilter.variantRule.entrezGeneId"
+                          md-input-name="proteinAutocomplete"
+                          md-select-on-match=true
+                          md-selected-item="genomicFilter.variantRule.proteinChange"
+                          md-search-text="data.searchTextProtein"
+                          md-item-text="protein"
+                          md-items="protein in loadProteinData(data.searchTextProtein)"
+                          placeholder="Protein change"
+                          style="margin-left:35px;">
+                          <span md-highlight-text="data.searchTextProtein">{{protein}}</span>
+                          <md-not-found>
+                            No protein changes found matching "{{data.searchTextProtein}}".
+                          </md-not-found>
+                        </md-autocomplete>
+                      </md-input-container>
+                      <md-input-container flex class="md-float-icon md-block">
+                        <label>Exon number</label>
+                        <md-icon md-font-library="material-icons" style="margin-top:6px;">short_text</md-icon>
+                        <md-autocomplete
+                          md-delay="200"
+                          ng-disabled="!genomicFilter.variantRule.entrezGeneId"
+                          md-input-name="transcriptExonAutocomplete"
+                          md-select-on-match=true
+                          md-selected-item="genomicFilter.variantRule.exonNumber"
+                          md-search-text="data.searchTextExon"
+                          md-item-text="transcriptExon"
+                          md-items="transcriptExon in loadTranscriptExonData(data.searchTextExon)"
+                          placeholder="Transcript exon"
+                          style="margin-left:35px;">
+                          <span md-highlight-text="data.searchTextExon">{{transcriptExon}}</span>
+                          <md-not-found>
+                            No exon transcripts found matching "{{data.searchTextExon}}".
+                          </md-not-found>
+                        </md-autocomplete>
+                      </md-input-container>
+                    <!-- Genomic alteration type -->
+                    <md-input-container class="md-icon-float md-block">
+                      <label class="mm-split-line">Genomic Alteration</label>
+                      <md-icon md-font-library="material-icons">shuffle</md-icon>
+
+                      <div style="margin-left: 36px; margin-top: 24px;">
+                        <md-radio-group layout="row"
+                                        ng-model="genomicFilter.variantRule.variantEffect"
+                                        ng-change="fetchIntermediateFilterResults(genomicFilter)">
+                          <md-radio-button
+                            ng-value="key"
+                            ng-repeat="(key, vc) in genomicAlterations"
+                            class="md-primary">
+                            {{ vc }}
+                          </md-radio-button>
+                          <span flex></span>
+                          <md-icon
+                            style="font-weight: 600; color:#F44336;"
+                            md-font-library="material-icons"
+                            ng-if="genomicFilter.variantRule.variantEffect"
+                            ng-click="genomicFilter.variantRule.variantEffect = ''">clear</md-icon>
+                        </md-radio-group>
+                      </div>
+                    </md-input-container>
+                  </div>
+                </md-content>
+              </md-tab-body>
+            </md-tab>
+            <md-tab id="patientTab">
+              <md-tab-label>
+                <md-icon md-font-library="material-icons" ng-if="selectedTab == 1">navigate_next</md-icon>
+                Clinical
+              </md-tab-label>
+              <md-tab-body>
+                <md-content class="md-padding">
+                  <h2 class="md-title">Cancer types and demographics</h2>
+
+                    <!-- Cancer type selector-->
+                    <md-input-container flex >
+                      <label></label>
+                      <md-icon is-autocomplete md-font-library="material-icons" style="margin-top:6px;">grain</md-icon>
+                      <md-select ng-model="genomicFilter.patientRule.cancerType"
+                                 name="cancerType"
+                                 ng-change="fetchIntermediateFilterResults(genomicFilter)"
+                                 is-match-critical
+                                 placeholder="Cancer Type"
+                                 ng-required="filterForm.geneAutocomplete.$invalid"
+                                 style="margin-left:35px;">
+                        <md-option ng-repeat="(opt, cancerType) in options.cancerTypes" value="{{opt}}">
+                          {{ cancerType }}
+                        </md-option>
+                      </md-select>
+                      <div ng-if="!genomicFilter.variantRule.gene && !genomicFilter.patientRule.cancerType" ng-messages="filterForm.geneAutocomplete.$error" role="alert" multiple>
+                        <div ng-message="required">You must atleast select a gene or a cancer type.</div>
+                      </div>
+                    </md-input-container>
+
+                    <!-- Oncotree diagnosis -->
+                    <md-input-container class="md-icon-float" flex style="margin-top:1px;">
+                      <label></label>
+                      <md-icon is-autocomplete md-font-library="material-icons">blur_on</md-icon>
+                      <md-autocomplete
+                        md-delay="200"
+                        md-no-caching="true"
+                        md-input-name="oncotreeAutoComplete"
+                        md-select-on-match=true
+                        md-selected-item="genomicFilter.patientRule.oncotreeDiagnosis"
+                        md-search-text="data.searchOncotreeText"
+                        md-selected-item-change="fetchIntermediateFilterResults(genomicFilter)"
+                        md-item-text="oncotree"
+                        md-items="oncotree in loadOncotreeData(data.searchOncotreeText)"
+                        placeholder="Oncotree diagnosis"
+                        ng-disabled="genomicFilter.patientRule.cancerType != 'specific'"
+                        style="margin-left:35px;">
+                        <span md-highlight-text="data.searchOncotreeText">{{oncotree}}</span>
+                        <md-not-found>
+                          No matches found for "{{data.searchOncotreeText}}".
+                        </md-not-found>
+                      </md-autocomplete>
+                    </md-input-container>
+
+
+                  <!-- Gender and primary organ specification -->
+                  <div layout layout-sm="column" style="margin-top:25px;">
+                    <md-input-container flex class="md-icon-float">
+                      <label></label>
+                      <md-icon is-autocomplete md-font-library="material-icons">face</md-icon>
+                      <md-select
+                        ng-change="fetchIntermediateFilterResults(genomicFilter)"
+                        is-match-critical
+                        ng-model="genomicFilter.patientRule.gender"
+                        placeholder="Gender"
+                        style="margin-left:35px;">
+                        <md-option ng-repeat="(gid, gender) in options.genders" value="{{gid}}">
+                          {{ gender }}
+                        </md-option>
+                      </md-select>
+                    </md-input-container>
+
+                    <!--<md-input-container class="md-icon-float" flex>
+                      <label></label>
+                      <md-icon is-autocomplete md-font-library="material-icons">favorite</md-icon>
+                      <md-autocomplete
+                        md-delay="200"
+                        md-no-caching="true"
+                        md-input-name="primaryOrganAutoComplete"
+                        md-select-on-match=true
+                        md-selected-item="genomicFilter.patientRule.primaryOrgan"
+                        md-search-text="data.searchOrganText"
+                        md-selected-item-change="_primaryOrganAutocompleteChange(organ)"
+                        md-item-text="organ"
+                        md-items="organ in loadOrganData(data.searchOrganText)"
+                        placeholder="Primary Organ"
+                        style="margin-left:35px;">
+                        <span md-highlight-text="data.searchOrganText">{{organ}}</span>
+                        <md-not-found>
+                          No matches found for "{{data.searchOrganText}}".
+                        </md-not-found>
+                      </md-autocomplete>
+                    </md-input-container>-->
+
+                  </div>
+                </md-content>
+              </md-tab-body>
+            </md-tab>
+
+            <md-tab id="generalTab">
+              <md-tab-label>
+                <md-icon md-font-library="material-icons" ng-if="selectedTab == 2" style="color:white!important;">navigate_next</md-icon>
+                General
+              </md-tab-label>
+              <md-tab-body>
+                <md-content class="md-padding">
+
+                  <h2 class="md-title">Filter properties</h2>
+                  <div layout layout-sm="column">
+                    <!-- Genomic filter label -->
+                    <md-input-container class="md-icon-float" flex>
+                      <label>Filter Label</label>
+                      <md-icon md-font-library="material-icons">label_outline</md-icon>
+                      <input
+                        name="filterLabel"
+                        ng-required="true"
+                        ng-minlength="3"
+                        ng-maxlength="15"
+                        ng-model="genomicFilter.atomicRule.label" />
+                      <div ng-messages="filterForm.filterLabel.$error" role="alert">
+                        <div ng-message="required">You must enter a label for your genomic filter.</div>
+                        <div ng-message="minlength" class="small">The filter label has to be atleast 3 characters long.</div>
+                        <div ng-message="maxlength" class="small">The filter label can only be 15 characters long.</div>
+                      </div>
+                    </md-input-container>
+                    <!-- disable date picker for now -->
+                    <!--<md-datepicker ng-disabled="true" ng-model="genomicFilter.atomicRule.filterDate" md-placeholder="Enter date"></md-datepicker>-->
+
+                    <md-input-container class="md-icon-float" flex>
+                      <label style="font-size:130%;">Badge color</label>
+                      <md-icon md-font-library="material-icons">palette</md-icon>
+                      <color-picker
+                        ng-model="genomicFilter.atomicRule.badgeColor"
+                        color-picker-swatch-only="true"
+                        color-picker-alpha="true"
+                        color-picker-format="hsv"
+                        aria-label="Badge color picker"
+                        style="margin-left:35px; margin-top:20px;"
+                        ></color-picker>
+                    </md-input-container>
+                  </div>
+                  <!-- Genomic filter comments / description -->
+                  <md-input-container class="md-icon-float md-block">
+                    <label>Description</label>
+                    <md-icon md-font-library="material-icons">description</md-icon>
+                    <textarea ng-model="genomicFilter.atomicRule.description"
+                              columns="1"
+                              name="description"
+                              rows="2"
+                              md-minlength="5"
+                              md-maxlength="150"
+                              ng-required="true"></textarea>
+                    <div ng-messages="filterForm.description.$error" role="alert">
+                      <div ng-message="required">You must enter a description for your genomic filter.</div>
+                    </div>
+                  </md-input-container>
+
+                  <h2 class="md-title md-primary">Badge</h2>
+
+                  <div layout layout-sm="column">
+                    <!-- Badge preview -->
+                    <md-input-container class="md-icon-float" flex>
+                      <label class="mm-split-line">Badge preview</label>
+                      <md-icon md-font-library="material-icons">visibility</md-icon>
+                      <md-chips class="geneBadgeContainer" style="margin-left:35px; margin-top:30px;">
+                        <md-chip class="geneBadge" style="color: {{ genomicFilter.atomicRule.badgeTextColor }}; background-color: {{ genomicFilter.atomicRule.badgeColor }}">{{ genomicFilter.atomicRule.label }}</md-chip>
+                      </md-chips>
+                    </md-input-container>
+
+                    <!-- Badge text color -->
+                    <md-input-container class="md-icon-float" flex>
+                      <label class="mm-split-line">Badge text color</label>
+                      <md-icon md-font-library="material-icons">palette</md-icon>
+
+                      <md-radio-group layout="row" ng-model="genomicFilter.atomicRule.badgeTextColor" style="margin-top:19px; margin-left:25px;">
+                        <md-radio-button value="black" class="md-primary">Black</md-radio-button>
+                        <md-radio-button value="white" class="md-primary">White</md-radio-button>
+                      </md-radio-group>
+                    </md-input-container>
+                  </div>
+                </md-content>
+              </md-tab-body>
+            </md-tab>
+            <md-tab>
+              <md-tab-label></md-tab-label>
+              <md-tab-body></md-tab-body>
+            </md-tab>
+          </md-tabs>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row" layout-align="center end" layout-wrap style="padding: 16px 0px 16px 0px">
+          <div ng-include="'scripts/components/controls/tabNavigation.html'"> </div>
+        </md-dialog-actions>
+      </div>
+      <div flex-sm="100" flex-gt-sm="40">
+        <md-tabs class="md-primary md-dynamic-height"
+                 id="plotPreview">
+          <md-tab id="plotTab">
+            <md-tab-label>
+
+            </md-tab-label>
+            <md-tab-body>
+              <md-content class="md-padding">
+                <div id="genomicFilterPlot" layout="column" layout-sm="column" layout-align="center center">
+
+                </div>
+                <div id="plotResults" layout="column" layout-sm="column" layout-align="center center">
+                    <div id="loadingPlot">
+                      <md-progress-circular md-mode="indeterminate" md-diameter="85">
+                      </md-progress-circular>
+                      <p class="lead">
+                        Calculating...
+                      </p>
+                    </div>
+                    <div id="emptyPlot" layout="column" layout-sm="column" layout-align="space-around">
+                      <p class="lead">
+                        Create or edit a genomic filter to view results
+                      </p>
+                    </div>
+                    <div id="noPlotData" layout="column" layout-sm="column" layout-align="space-around">
+                      <p class="lead">
+                        Selected filter characteristics will currently not yield any matches
+                      </p>
+                    </div>
+                </div>
+              </md-content>
+            </md-tab-body>
+          </md-tab>
+        </md-tabs>
+      </div>
+    </div>
+  </ng-form>
+</md-dialog>

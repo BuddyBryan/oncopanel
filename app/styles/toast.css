@@ -1,0 +1,27 @@
+md-toast.md-success-toast-theme {
+  background-color: rgba(162,212,144,0.9);
+  color: black;
+  position: fixed;
+  top: 36px;
+  width: 250px;
+}
+
+md-toast.md-warn-toast-theme {
+  background-color: rgba(212,162,144,0.9);
+  color: black;
+  position: fixed;
+  top: 36px;
+  width: 250px;
+}
+
+md-toast.md-neutral-toast-theme {
+  position: fixed;
+  top: 36px;
+  width: 250px;
+}
+
+md-toast {
+
+  z-index: 10000;
+}
+

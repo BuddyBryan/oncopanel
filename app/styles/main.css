@@ -1,0 +1,147 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  /*font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;*/
+  padding: 0;
+}
+
+/* Frontpage main section*/
+#frontpage > .container {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  height: 30%;
+  width: 50%;
+  margin: -15% 0 0 -25%;
+}
+
+
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  /*margin-bottom: 10px; */
+}
+
+.header > .navbar {
+  margin-bottom:0px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  position: fixed;
+  width:100%;
+  bottom: 0;
+  text-align: center;
+  height: 50px;
+  color: #a2a2a2;
+  padding-top: 15px;
+  padding-bottom: 35px;
+  border-top: 1px solid #e5e5e5;
+  background-color: white;
+  z-index:10;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main jumbotron message and sign up button */
+.jumbotron {
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+.jumbotron > h1 {
+  margin-bottom:50px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.jumbotron > img {
+  margin-left: -50px;
+}
+
+.jumbotron > p.lead {
+  margin-bottom: 45px;
+}
+
+@media screen and (max-width: 1199px) {
+  .jumbotron > img {
+    margin-left: -95px;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .jumbotron > img {
+    margin-left: -50px;
+    width: auto;
+    height: auto;
+    display:block;
+    max-width: 450px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  body #frontpage > .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+/* No text selection for most browsers */
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Container definitions */
+.mm-wide-table-container {
+  margin: 0px;
+  padding: 0px 40px;
+}
+
+.mm-wide-form-container {
+  margin: 0% 2%;
+  padding: 0px 40px;
+  min-width: 768px;
+}
